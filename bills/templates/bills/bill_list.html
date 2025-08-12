@@ -1,0 +1,22 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ view.model }}</title>
+</head>
+<body>
+    {% for obj in object_list %}
+    <div>
+        <p>{{ obj }}</p>
+        <details>
+            <summary>{{ obj.clients.model }}</summary>
+            {% for client in obj.clients.distinct %}
+                <p>{{ client }}</p>
+            {% endfor %}
+        </details>
+    </div>
+    {% endfor %}
+</body>
+</html>

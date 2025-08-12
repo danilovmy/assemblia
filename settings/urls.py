@@ -10,8 +10,10 @@ handler500 = "settings.views.handler500"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # path('schema.yaml', generic.RedirectView.as_view(url='/media/schema.yaml'), name='schema.yaml'),
-    # path('docs/', generic.TemplateView.as_view(template_name='schema.html'), name='docs'),
+    path("clients/", include("clients.urls")),
+    path("bills/", include("bills.urls")),
+    path('schema.yaml', generic.RedirectView.as_view(url='/media/schema.yaml'), name='schema.yaml'),
+    path('docs/', generic.TemplateView.as_view(template_name='schema.html'), name='docs'),
 ]
 
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

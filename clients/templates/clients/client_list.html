@@ -1,0 +1,29 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ view.model }}</title>
+</head>
+<body>
+    {% for obj in object_list %}
+    <div>
+        <p>{{ obj }}</p>
+
+        <details>
+            <summary>{% trans 'bills' %}</summary>
+            {% for bill in obj.bills.distinct %}
+                <p>{{ bill }}</p>
+            {% endfor %}
+        </details>
+        {% comment %}
+
+        <form action="{% url 'clients:client_update' obj.pk %}" method="post">{% csrf_token %}
+            <input type="submit">
+        </form>
+        {% endcomment %}
+    </div>
+    {% endfor %}
+</body>
+</html>
