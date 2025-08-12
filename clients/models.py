@@ -14,6 +14,10 @@ class Client(models.Model):
     def __str__(self):
         return f'{self.name}'
 
+    @property
+    def opts(self):
+        return self._meta
+
 
 class ClientBillManager(models.Manager):
     pass
@@ -32,3 +36,7 @@ class ClientBill(models.Model):
     priority = models.IntegerField(default=3)
 
     objects = ClientBillManager()
+
+    @property
+    def opts(self):
+        return self._meta

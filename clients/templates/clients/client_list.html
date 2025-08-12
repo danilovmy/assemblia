@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ view.model }}</title>
+    <title>{{ view.model.opts.verbose_name_plural }}</title>
 </head>
 <body>
     {% for obj in object_list %}
@@ -12,7 +12,7 @@
         <p>{{ obj }}</p>
 
         <details>
-            <summary>{% trans 'bills' %}</summary>
+            <summary>{{ obj.bills.all.model.opts.verbose_name_plural }}</summary>
             {% for bill in obj.bills.distinct %}
                 <p>{{ bill }}</p>
             {% endfor %}
